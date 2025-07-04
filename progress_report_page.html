@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Report - Meallytics</title>
+    <link rel="stylesheet" href="assets/css/progress_report_page.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Ensure Poppins font is loaded -->
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <!-- Main Content -->
+
+    <nav class="navbar">
+        <div class="menu-btn" onclick="openNav()">☰</div>
+        <div class="logo">
+            <a href="Main Dashboard.html">
+                <img src="assets/images/Meallytics logo.png" alt="Logo">
+            </a>
+        </div>
+
+    </nav>
+
+    <!-- Progress Report Text Below the Header -->
+    <div class="progress-report-text">
+        <h1>Progress Report</h1>
+        <span>📊</span>
+    </div>
+
+    <main>
+        <!-- Performance Score Section -->
+        <section class="performance-score">
+            <h2>Performance Score</h2>
+            <div class="score-container">
+                <div class="circle">
+                    <span id="score">0</span>
+                </div>
+                <p>Based on Core Health Metrics</p>
+            </div>
+
+            <div class="field-data">
+                <div class="field">
+                    <span>Water Intake</span>
+                    <div class="bar bg-blue" style="width: 75%"></div>
+                </div>
+                <div class="field">
+                    <span>Daily Steps</span>
+                    <div class="bar bg-green" style="width: 85%"></div>
+                </div>
+                <div class="field">
+                    <span>Calories Burned</span>
+                    <div class="bar bg-orange" style="width: 60%"></div>
+                </div>
+                <div class="field">
+                    <span>Sleep Duration</span>
+                    <div class="bar bg-purple" style="width: 90%"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Graphs Section -->
+        <section class="graphs">
+            <h2>Health & Activity Insights</h2>
+            <div class="graph-container">
+                <div class="graph">
+                    <h3>Calories In/Out</h3>
+                    <img src="assets/images/calories_graph.png" alt="Calories In/Out Graph" />
+                </div>
+                <div class="graph">
+                    <h3>Workout Time</h3>
+                    <img src="assets/images/workout_graph.png" alt="Workout Time Graph" />
+                </div>
+            </div>
+        </section>
+
+        <!-- View Options -->
+        <!-- View Options Section -->
+        <section class="controls">
+            <h2>View Options</h2>
+            <div class="button-group">
+                <a href="weekly_view.html" class="view-btn">📅 Weekly View</a>
+                <a href="monthly_view.html" class="view-btn">🗓️ Monthly View</a>
+                <!-- New Button Linking to Nutrition Insights Page -->
+                <a href="nutrition_insights_page.html" class="view-btn">🍏 Nutrition Insights</a>
+            </div>
+        </section>
+
+
+        <!-- Export & Share Section -->
+        <section class="export-share">
+            <h2>Export & Share</h2>
+            <div class="button-group">
+                <button class="export-btn">Export PDF</button>
+                <button class="share-btn">Share Report</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Meallytics - Your health journey starts here</p>
+    </footer>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const scoreEl = document.getElementById("score");
+            const targetScore = 60;
+            let current = 0;
+
+            const updateScore = () => {
+                if (current < targetScore) {
+                    current += 1;
+                    scoreEl.textContent = current;
+                    requestAnimationFrame(updateScore);
+                } else {
+                    scoreEl.textContent = targetScore;
+                }
+            };
+
+            updateScore();
+        });
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.querySelector(".main-content").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.querySelector(".main-content").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

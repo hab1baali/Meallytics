@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutrition Insights - Meallytics</title>
+    <link rel="stylesheet" href="assets/css/nutrition_insights_page.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <nav class="navbar">
+        <div class="menu-btn" onclick="openNav()">☰</div>
+        <div class="logo">
+            <a href="Main Dashboard.html">
+                <img src="assets/images/Meallytics logo.png" alt="Logo">
+            </a>
+        </div>
+
+    </nav>
+    <div class="page-title">
+        <h1>Nutrition Insights</h1>
+        <span>🥦📚</span>
+    </div>
+
+    <main class="content">
+        <!-- Educational Content -->
+        <section class="card dark-card">
+            <h2>📘 Educational Content</h2>
+            <ul>
+                <li><a href="#">What is Protein?</a></li>
+                <li><a href="#">Balanced Meals: The Essentials</a></li>
+                <li><a href="#">Micronutrients You Shouldn't Ignore</a></li>
+            </ul>
+        </section>
+
+        <!-- Tips from Experts -->
+        <section class="card dark-card">
+            <h2>💡 Tips from Experts</h2>
+            <ul>
+                <li>Hydrate before meals</li>
+                <li>Eat more colorful veggies</li>
+                <li>Snack smarter, not harder</li>
+            </ul>
+        </section>
+
+        <!-- Articles/Videos -->
+        <section class="card dark-card">
+            <h2>🎥 Articles & Videos</h2>
+            <ul>
+                <li><a href="#">Understanding Carbs – Article</a></li>
+                <li><a href="#">Meal Planning for Beginners – Video</a></li>
+                <li><a href="#">Top 5 Nutrition Myths – Article</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Meallytics - Your health journey starts here</p>
+    </footer>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.querySelector(".main-content").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.querySelector(".main-content").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

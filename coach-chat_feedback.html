@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat & Feedback</title>
+  <link rel="stylesheet" href="assets/css/coach.css" />
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
+            <div class="menu-btn" onclick="openNav()">☰</div>
+            <div class="logo">
+                <a href="Main Dashboard.html">
+                    <img src="assets/images/Meallytics logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="coach-dashboard.html">Dashboard</a>
+                <a href="coach-consultations.html">Consultations</a>
+                <a href="coach-chat_feedback.html">Chat & Feedback</a>
+                <a href="coach-plan.html">Plans</a>
+
+            </div>
+
+        </nav>
+
+
+
+        <div class="card">
+            <h2>Chat With Coach</h2>
+            <div class="chat-box">
+                <p><strong>Coach:</strong> How was your workout today?</p>
+                <p><strong>You:</strong> It was great! I feel energized.</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." />
+                <button>Send</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Feedback & Suggestions</h2>
+            <div class="feedback-form">
+                <label>Coach Suggestions</label>
+                <textarea rows="3" placeholder="Suggestions for the coach..."></textarea>
+
+                <label>Comments on Meals/Workouts</label>
+                <textarea rows="3" placeholder="Your thoughts on the coach's advice..."></textarea>
+
+                <label>Plan Adjustments</label>
+                <textarea rows="3" placeholder="Any changes you'd like to make to your routine..."></textarea>
+
+                <button>Submit Feedback</button>
+            </div>
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+        <script>
+            document.querySelector(".chat-input button").addEventListener("click", function () {
+                const input = document.querySelector(".chat-input input");
+                const message = input.value.trim();
+                if (message !== "") {
+                    const chatBox = document.querySelector(".chat-box");
+                    const newMsg = document.createElement("p");
+                    newMsg.innerHTML = `<strong>You:</strong> ${message}`;
+                    chatBox.appendChild(newMsg);
+                    input.value = "";
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+            });
+        </script>
+        <script>
+            document.querySelector(".feedback-form button").addEventListener("click", () => {
+                alert("✅ Feedback submitted successfully!");
+            });
+        </script>
+
+
+</body>
+</html>

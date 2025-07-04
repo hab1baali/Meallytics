@@ -1,0 +1,182 @@
+<!-- streaks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streaks & Rewards</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .weekly-streak {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .day {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s;
+      cursor: pointer;
+    }
+    .completed {
+      background-color: darkgreen;
+      color: white;
+    }
+    .missed {
+      background-color: darkred;
+      color: white;
+    }
+    .upcoming {
+      background-color: grey;
+      color: white;
+    }
+    .day:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <!-- Main Content -->
+
+    <nav class="navbar">
+        <div class="menu-btn" onclick="openNav()">☰</div>
+        <div class="logo">
+            <a href="Main Dashboard.html">
+                <img src="assets/images/Meallytics logo.png" alt="Logo">
+            </a>
+        </div>
+
+    </nav>
+    <div class="container">
+        <h1>Streaks & Rewards</h1>
+
+        <div class="card">
+            <h2>Weekly Streak Tracker</h2>
+            <div class="weekly-streak" id="weekly-streak"></div>
+        </div>
+
+        <div class="card">
+            <h2>Daily Login Streak</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="flex: 1; height: 20px; background: #ddd; border-radius: 10px; overflow: hidden;">
+                    <div style="width: 33%; height: 100%; background: limegreen;"></div>
+                </div>
+                <span><strong>4 Days</strong></span>
+            </div>
+            <p style="margin-top: 5px; font-size: 18px;">🔥 Longest Streak: <strong>12 Days</strong></p>
+        </div>
+
+        <div class="card">
+            <h2>Milestone Badges</h2>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="background: #28a745; color: white; padding: 10px 15px; border-radius: 12px;">🎉 7-Day Streak</div>
+                <div style="background: #ffc107; color: black; padding: 10px 15px; border-radius: 12px;">🔥 14-Day Streak</div>
+                <div style="background: #6c757d; color: white; padding: 10px 15px; border-radius: 12px;">🏆 30-Day Streak</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Points History</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #6c757d;">
+                        <th style="text-align: left; padding: 8px; font-size: 20px;">Activity</th>
+                        <th style="text-align: right; padding: 8px; font-size: 20px;">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 8px; font-size: 20px;">✅ Daily Login</td>
+                        <td style="text-align: right; padding: 8px; color: #28a745; font-size: 30px; ">+50 pts</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-size: 20px;">💪 Completed Workout</td>
+                        <td style="text-align: right; padding: 8px; color: #28a745; font-size: 30px; ">+30 pts</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-size: 20px;">🥗 Healthy Meal Logged</td>
+                        <td style="text-align: right; padding: 8px; color: #28a745;font-size: 30px;">+20 pts</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <script>
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const today = new Date();
+            const currentDay = today.getDay();
+
+            // Simulated streak data (for demo: completed on Mon-Wed, missed Thu, today is Fri)
+            const streakData = ['completed', 'completed', 'completed', 'missed', 'completed', 'upcoming', 'upcoming'];
+
+            const weeklyStreakContainer = document.getElementById('weekly-streak');
+            daysOfWeek.forEach((day, index) => {
+                const div = document.createElement('div');
+                div.classList.add('day');
+
+                if (index < streakData.length) {
+                    div.classList.add(streakData[index]);
+                } else {
+                    div.classList.add('upcoming');
+                }
+
+                div.textContent = day;
+                weeklyStreakContainer.appendChild(div);
+            });
+        </script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+</body>
+    </html>

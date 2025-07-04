@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coach Dashboard</title>
+  <link rel="stylesheet" href="assets/css/coach.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
+            <div class="menu-btn" onclick="openNav()">☰</div>
+            <div class="logo">
+                <a href="Main Dashboard.html">
+                    <img src="assets/images/Meallytics logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="coach-dashboard.html">Dashboard</a>
+                <a href="coach-consultations.html">Consultations</a>
+                <a href="coach-chat_feedback.html">Chat & Feedback</a>
+                <a href="coach-plan.html">Plans</a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="card">
+            <h2>Coach Dashboard</h2>
+            <div class="dashboard-grid">
+                <div>
+                    <strong>Assigned Coach:</strong> Coach John Doe<br />
+                    <strong>Email:</strong> john@fitapp.com
+                </div>
+                <div>
+                    <strong>Recent Meals:</strong><br />
+                    - Breakfast: Oats<br />
+                    - Lunch: Grilled Chicken<br />
+                    <strong>Recent Workouts:</strong><br />
+                    - Cardio (30 min)<br />
+                    - Yoga (45 min)
+                </div>
+                <div>
+                    <strong>Progress Chart:</strong>
+                    <canvas id="progressChart"></canvas>
+                </div>
+                <div>
+                    <button>Chat / Message Coach</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Activity Summary</h2>
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Coach Notes & Reminders</h2>
+            <ul>
+                <li>📝 "Don't forget to hydrate regularly."</li>
+                <li>💡 "Stretch for 10 minutes after every workout."</li>
+                <li>🏆 "Great progress on your weight goals!"</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Upcoming Consultations</h2>
+            <ul>
+                <li>📅 21 Apr – Workout Check-In</li>
+                <li>📅 25 Apr – Nutrition Planning</li>
+                <li>📅 30 Apr – Monthly Progress Review</li>
+            </ul>
+        </div>
+
+        <script>
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                    datasets: [{
+                        label: 'Weight (kg)',
+                        data: [72, 71.5, 71, 70.4, 69.9],
+                        borderColor: '#1db954',
+                        backgroundColor: 'rgba(29, 185, 84, 0.2)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                color: '#ccc'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#ccc'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const actx = document.getElementById('activityChart').getContext('2d');
+            new Chart(actx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Cardio', 'Strength', 'Flexibility'],
+                    datasets: [{
+                        label: 'Workout Distribution',
+                        data: [3, 2, 1],
+                        backgroundColor: ['#1db954', '#3e95cd', '#f39c12']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background: linear-gradient(90deg, #065f46, #1e3a8a);
+            padding: 1rem;
+            display: flex;
+            text-align: center;
+            gap: 2rem;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s;
+            }
+
+                nav a:hover {
+                    color: #00ff88;
+                }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+        .logo img {
+            height: 50px;
+            width: 200px;
+            margin-left: 273%;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+            margin-right: 80px;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+
+        /* Add responsiveness */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.5rem auto;
+            }
+        }
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #0f172a;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 15px 25px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: block;
+                transition: 0.2s;
+            }
+
+                .sidebar a:hover {
+                    background-color: #1db954;
+                }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            z-index: 1;
+            color: white;
+        }
+
+        /* Adjust main content when sidebar is open */
+        .main-content {
+            transition: margin-left 0.3s;
+        }
+
+        header {
+            background: linear-gradient(to right, #001f3f, #003f3f);
+            padding: 20px 40px;
+            text-align: center;
+            color: #00ffcc;
+            font-size: 24px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            padding: 40px;
+        }
+        h1{
+            color: #22c55e;
+            text-align:center;
+        }
+
+        .day-card {
+            background: linear-gradient(145deg, #002f4f, #003f3f);
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+            .day-card h3 {
+                color: #22c55e;
+                margin-bottom: 12px;
+                font-size:25px;
+                text-align:center;
+                margin-right:20px;
+            }
+
+            .day-card ul {
+                list-style: none;
+                padding-left: 0;
+                color: #ddd;
+            }
+
+                .day-card ul li {
+                    margin-bottom: 6px;
+                }
+
+        a.back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
+        }
+
+        .workout-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px;
+            padding-top: 10px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .workout-card {
+            flex: 0 0 auto;
+            width: 200px;
+            background: #012f4f;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
+            scroll-snap-align: start;
+            text-align: center;
+            padding: 12px;
+        }
+
+            .workout-card img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 8px;
+            }
+
+            .workout-card h4 {
+                font-size: 16px;
+                color: #00ffcc;
+                margin-bottom: 4px;
+            }
+
+            .workout-card p {
+                font-size: 14px;
+                color: #ddd;
+            }
+
+        .workout-img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            margin-top:10px;
+            vertical-align: middle;
+        }
+        .workout-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .workout-item {
+            background: linear-gradient(145deg, #002f4f, #003f3f);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            min-width: 200px;
+            text-align: center;
+            flex-shrink: 0; /* Prevent items from shrinking */
+            color: #fff;
+            width: 250px; /* Control width for consistency */
+        }
+
+        .workout-img {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+
+        .workout-item strong {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .workout-item em {
+            font-size: 14px;
+            color: #00ffcc;
+        }
+
+        .workout-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px;
+            padding-top: 10px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .workout-item {
+            flex: 0 0 auto;
+            width: 200px;
+            background: #012f4f;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.2);
+            scroll-snap-align: start;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .workout-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px; /* Space between the name and image */
+        }
+
+        .workout-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .workout-item img {
+            width: 100%;
+            height: 150px; /* Ensure consistent image size */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .workout-item p {
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        .workout-img {
+            width: 100%;
+            height: 150px; /* Adjust based on your image size */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+      
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to right, #001f3f, #003f3f);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+            header h1 {
+                color: #00ffcc;
+                font-size: 28px;
+                font-weight: 800;
+            }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+            nav a:hover {
+                color: #00ffcc;
+            }
+
+
+      
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
+            <div class="menu-btn" onclick="openNav()">☰</div>
+            <div class="logo">
+                <a href="Main Dashboard.html">
+                    <img src="assets/images/Meallytics logo.png" alt="Logo">
+                </a>
+            </div>
+
+        </nav>
+
+        <h1>Workout Plan</h1>
+        <div class="container">
+
+            <div class="day-card">
+                <h3>Monday: Cardio + Core</h3>
+                <div class="workout-scroll">
+                    <!-- Running -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Running - 20 min</strong>
+                        <img src="assets/images/running.JPEG" alt="Running" class="workout-img" />
+                        <br />
+                        Moderate pace on treadmill or track. Great for warming up and torching fat.<br />
+                        <em>Calories Burnt: ~200 kcal</em>
+                    </div>
+
+                    <!-- Cable Crunches -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Seated Crunches - 3x15</strong>
+                        <img src="assets/images/seatedcrunches.JPEG" alt="Cable Crunches" class="workout-img" />
+                        <br />
+                        Focus on engaging the core while using the cable machine. Keep your elbows in place.<br />
+                        <em>Calories Burnt: ~40 kcal</em>
+                    </div>
+
+
+
+
+                    <!-- Leg Raises -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Leg Raises - 3x15</strong>
+                        <img src="assets/images/legraises.JPEG" alt="Leg Raises" class="workout-img" />
+                        <br />
+                        Focus on lifting your legs while keeping your back on the mat. Great for lower abs.<br />
+                        <em>Calories Burnt: ~30 kcal</em>
+                    </div>
+
+                    <!-- Russian Twist with Plates -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Russian Twist with Plates - 3x30s</strong>
+                        <img src="assets/images/russiantwist.JPEG" alt="Russian Twist with Plates" class="workout-img" />
+                        <br />
+                        Engage the core and obliques as you twist your torso, holding a plate in both hands.<br />
+                        <em>Calories Burnt: ~40 kcal</em>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="day-card">
+                <h3>Tuesday: Shoulders</h3>
+                <div class="workout-scroll">
+                    <!-- Shoulder Press -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Shoulder Press - 4x12</strong>
+                        <img src="assets/images/shoulderpress.JPEG" alt="Shoulder Press" class="workout-img" />
+                        <br />
+                        Focus on pressing the dumbbells or barbell overhead, keeping your core engaged.<br />
+                        <em>Calories Burnt: ~70 kcal</em>
+                    </div>
+
+                    <!-- Lateral Raises -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Lateral Raises - 3x15</strong>
+                        <img src="assets/images/lateralraises.JPEG" alt="Lateral Raises" class="workout-img" />
+                        <br />
+                        Lift the dumbbells to your sides, elbows slightly bent, targeting the deltoids.<br />
+                        <em>Calories Burnt: ~50 kcal</em>
+                    </div>
+
+                    <!-- Front Raises -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Front Raises - 3x15</strong>
+                        <img src="assets/images/frontraises.JPEG" alt="Front Raises" class="workout-img" />
+                        <br />
+                        Raise the dumbbells or plate in front of you to shoulder height to engage the front delts.<br />
+                        <em>Calories Burnt: ~50 kcal</em>
+                    </div>
+
+                    <!-- Arnold Press -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Arnold Press - 3x12</strong>
+                        <img src="assets/images/arnoldpress.JPEG" alt="Arnold Press" class="workout-img" />
+                        <br />
+                        A variation of the shoulder press, starting with palms facing you, then rotating outward.<br />
+                        <em>Calories Burnt: ~70 kcal</em>
+                    </div>
+
+                    <!-- Upright Row -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Upright Row - 4x10</strong>
+                        <img src="assets/images/uprightrow.JPEG" alt="Upright Row" class="workout-img" />
+                        <br />
+                        Pull the barbell or dumbbells straight up towards your chin, focusing on your traps and delts.<br />
+                        <em>Calories Burnt: ~60 kcal</em>
+                    </div>
+
+                    <!-- Rear Delt Fly -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Rear Delt Fly - 3x12</strong>
+                        <img src="assets/images/reardeltfly.JPEG" alt="Rear Delt Fly" class="workout-img" />
+                        <br />
+                        With dumbbells in hand, hinge at your hips and raise your arms to the sides to target rear delts.<br />
+                        <em>Calories Burnt: ~50 kcal</em>
+                    </div>
+
+                    <!-- Shrugs -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Shrugs - 4x12</strong>
+                        <img src="assets/images/shrugs.JPEG" alt="Shrugs" class="workout-img" />
+                        <br />
+                        Hold dumbbells or barbell at your sides and shrug your shoulders to engage your traps.<br />
+                        <em>Calories Burnt: ~40 kcal</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <h3>Wednesday: Kickboxing</h3>
+                <div class="workout-scroll">
+                    <!-- Shadow Boxing -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Shadow Boxing - 3 rounds</strong>
+                        <img src="assets/images/shadowboxing.JPEG" alt="Shadow Boxing" class="workout-img" />
+                        <br />
+                        Practice your punches and footwork without equipment to improve form and technique.<br />
+                        <em>Calories Burnt: ~150 kcal</em>
+                    </div>
+
+                    <!-- Heavy Bag -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Heavy Bag - 5 rounds</strong>
+                        <img src="assets/images/heavybag.JPEG" alt="Heavy Bag" class="workout-img" />
+                        <br />
+                        Work on power and endurance with punches and kicks, aiming for maximum intensity.<br />
+                        <em>Calories Burnt: ~250 kcal</em>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="day-card">
+                <h3>Thursday: Full-body HIIT</h3>
+                <div class="workout-scroll">
+                    <!-- Jump Squats -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Jump Squats - 3x15</strong>
+                        <img src="assets/images/jumpsquats.JPEG" alt="Jump Squats" class="workout-img" />
+                        <br />
+                        Explosive lower-body exercise to increase power and burn fat.<br />
+                        <em>Calories Burnt: ~100 kcal</em>
+                    </div>
+
+                    <!-- Burpees -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Burpees - 4x10</strong>
+                        <img src="assets/images/burpees.JPEG" alt="Burpees" class="workout-img" />
+                        <br />
+                        High-intensity movement for full-body conditioning and cardiovascular endurance.<br />
+                        <em>Calories Burnt: ~150 kcal</em>
+                    </div>
+
+                    <!-- Push-ups -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Push-ups - 3x20</strong>
+                        <img src="assets/images/pushup.JPEG" alt="Push-ups" class="workout-img" />
+                        <br />
+                        Classic bodyweight exercise to build upper body strength.<br />
+                        <em>Calories Burnt: ~50 kcal</em>
+                    </div>
+
+                    <!-- Mountain Climbers -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Mountain Climbers - 4x30s</strong>
+                        <img src="assets/images/mountainclimbers.JPEG" alt="Mountain Climbers" class="workout-img" />
+                        <br />
+                        High-intensity core exercise that engages the entire body.<br />
+                        <em>Calories Burnt: ~60 kcal</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <h3>Friday: Strength Training</h3>
+                <div class="workout-scroll">
+                    <!-- Deadlifts -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Deadlifts - 4x8</strong>
+                        <img src="assets/images/deadlift.JPEG" alt="Deadlifts" class="workout-img" />
+                        <br />
+                        A compound lift targeting the posterior chain (lower back, glutes, hamstrings).<br />
+                        <em>Calories Burnt: ~120 kcal</em>
+                    </div>
+
+                    <!-- Bench Press -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Bench Press - 4x10</strong>
+                        <img src="assets/images/benchpress.JPEG" alt="Bench Press" class="workout-img" />
+                        <br />
+                        Classic chest exercise for upper body strength development.<br />
+                        <em>Calories Burnt: ~90 kcal</em>
+                    </div>
+
+                    <!-- Barbell Rows -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Barbell Rows - 4x10</strong>
+                        <img src="assets/images/barbellrows.JPEG" alt="Barbell Rows" class="workout-img" />
+                        <br />
+                        Target the back muscles with controlled, rowing motions.<br />
+                        <em>Calories Burnt: ~80 kcal</em>
+                    </div>
+
+                    <!-- Overhead Press -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Overhead Press - 4x8</strong>
+                        <img src="assets/images/overheadpress.JPEG" alt="Overhead Press" class="workout-img" />
+                        <br />
+                        Build shoulder strength and stability with an overhead pressing motion.<br />
+                        <em>Calories Burnt: ~75 kcal</em>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <h3>Saturday: Active Recovery</h3>
+                <div class="workout-scroll">
+                    <!-- Stretching -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Stretching - 15 min</strong>
+                        <img src="assets/images/stretching.JPEG" alt="Stretching" class="workout-img" />
+                        <br />
+                        Improve flexibility and reduce muscle tension after the week’s workouts.<br />
+                        <em>Calories Burnt: ~40 kcal</em>
+                    </div>
+
+                    <!-- Yoga Flow -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Yoga Flow - 20 min</strong>
+                        <img src="assets/images/yogaflow.JPEG" alt="Yoga Flow" class="workout-img" />
+                        <br />
+                        A calming, full-body stretch that aids in muscle recovery and mindfulness.<br />
+                        <em>Calories Burnt: ~50 kcal</em>
+                    </div>
+
+                    <!-- Walking -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Walking - 30 min</strong>
+                        <img src="assets/images/walking.JPEG" alt="Walking" class="workout-img" />
+                        <br />
+                        Low-intensity activity to promote recovery and keep the body moving.<br />
+                        <em>Calories Burnt: ~100 kcal</em>
+                    </div>
+                </div>
+            </div>
+            <div class="day-card">
+                <h3>Sunday: Rest</h3>
+                <div class="workout-scroll">
+
+                    <!-- Meditation -->
+                    <div class="workout-item">
+                        <strong class="workout-name">Meditation</strong>
+                        <img src="assets/images/meditation.JPEG" alt="Meditation" class="workout-img" />
+                        <br />
+                        A calming practice to relax your mind and reduce stress for recovery.<br />
+                        <em>Calories Burnt: ~15 kcal</em>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+</body>
+</html>

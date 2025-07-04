@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meal Management</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
+            <div class="menu-btn" onclick="openNav()">☰</div>
+            <div class="logo">
+                <a href="Main Dashboard.html">
+                    <img src="assets/images/Meallytics logo.png" alt="Logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li onclick="showTab('plan')" class="active">Plan</li>
+                    <li onclick="showTab('details')">Details</li>
+                    <li onclick="showTab('swap')">Swap</li>
+                    <li onclick="showTab('sourcing')">Sourcing</li>
+                </ul>
+            </nav>
+
+        </nav>
+        <main class="main-container">
+
+
+
+            <!-- Meal Plan Tab -->
+            <section id="plan" class="card tab active">
+                <h2>📅 Weekly Meal Plan</h2>
+                <div class="week-timeline">
+                    <button class="day-btn" onclick="selectDay('mon')">Mon</button>
+                    <button class="day-btn" onclick="selectDay('tue')">Tue</button>
+                    <button class="day-btn selected" onclick="selectDay('wed')">Wed</button>
+                    <button class="day-btn" onclick="selectDay('thu')">Thu</button>
+                    <button class="day-btn" onclick="selectDay('fri')">Fri</button>
+                    <button class="day-btn" onclick="selectDay('sat')">Sat</button>
+                    <button class="day-btn" onclick="selectDay('sun')">Sun</button>
+                </div>
+                <p><strong>Selected Date: </strong><span class="highlighted-date">24/04/2025</span> </p>
+
+
+                <div class="meal-container">
+                    <h3>🍳 Breakfast: Greek Yogurt Bowl</h3>
+                    <div class="meal-block">
+                        <div class="meal-text">
+                            <p class="meal-description">Yogurt with honey, berries & granola.</p>
+                            <div class="meal-macros">
+                                <div><strong>Calories:</strong> 320 kcal</div>
+                                <div><strong>Protein:</strong> 18g</div>
+                                <div><strong>Carbs:</strong> 28g</div>
+                                <div><strong>Fat:</strong> 12g</div>
+                            </div>
+                        </div>
+                        <img src="assets/images/granola.png" alt="Breakfast" class="meal-img">
+                        <button class="swap-btn">Swap Meal</button>
+                    </div>
+                </div>
+
+
+                <div class="meal-container">
+                    <h3>🥪 Lunch: Grilled Chicken Wrap</h3>
+                    <div class="meal-block">
+                        <div class="meal-text">
+                            <p class="meal-description">Chicken, avocado & veggies in wrap.</p>
+                            <div class="meal-macros">
+                                <div><strong>Calories:</strong> 550 kcal</div>
+                                <div><strong>Protein:</strong> 35g</div>
+                                <div><strong>Carbs:</strong> 40g</div>
+                                <div><strong>Fat:</strong> 22g</div>
+                            </div>
+                        </div>
+                        <img src="assets/images/Grilled chicken wrap.png" alt="Lunch" class="meal-img">
+                        <button class="swap-btn">Swap Meal</button>
+                    </div>
+                </div>
+
+
+                <div class="meal-container">
+                    <h3>🍝 Dinner: Spaghetti Bolognese</h3>
+                    <div class="meal-block">
+                        <div class="meal-text">
+                            <p class="meal-description">Pasta with meat sauce & salad.</p>
+                            <div class="meal-macros">
+                                <div><strong>Calories:</strong> 620 kcal</div>
+                                <div><strong>Protein:</strong> 30g</div>
+                                <div><strong>Carbs:</strong> 60g</div>
+                                <div><strong>Fat:</strong> 20g</div>
+                            </div>
+                        </div>
+                        <img src="assets/images/Spaghetti.png" alt="Dinner" class="meal-img">
+                        <button class="swap-btn">Swap Meal</button>
+                    </div>
+                </div>
+
+
+                <div class="meal-container">
+                    <h3>🍎 Snack: Apple with Peanut Butter</h3>
+                    <div class="meal-block">
+                        <div class="meal-text">
+                            <p class="meal-description">Apple slices with peanut butter.</p>
+                            <div class="meal-macros">
+                                <div><strong>Calories:</strong> 190 kcal</div>
+                                <div><strong>Protein:</strong> 4g</div>
+                                <div><strong>Carbs:</strong> 22g</div>
+                                <div><strong>Fat:</strong> 10g</div>
+                            </div>
+                        </div>
+                        <img src="assets/images/Apples.png" alt="Snack" class="meal-img">
+                        <button class="swap-btn">Swap Meal</button>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button>Regenerate Plan</button>
+                    <button>Add Custom Meal</button>
+                </div>
+            </section>
+
+            <!-- Meal Details Tab -->
+            <section id="details" class="card tab">
+                <h2>📋 Meal Details</h2>
+
+                <div class="meal-detail-container">
+                    <h3>🍳 Greek Yogurt Bowl</h3>
+                    <div class="action-buttons">
+                        <button>Add to Favorites</button>
+                        <button>Rate Recipe</button>
+                    </div>
+                    <div class="meal-detail-content">
+                        <div class="ingredients">
+                            <h4>Ingredients:</h4>
+                            <ul>
+                                <li>Greek yogurt</li>
+                                <li>Honey</li>
+                                <li>Blueberries</li>
+                                <li>Granola</li>
+                                <li>Chopped almonds</li>
+                            </ul>
+                        </div>
+                        <div class="preparation">
+                            <h4>Preparation:</h4>
+                            <ol>
+                                <li>Spoon Greek yogurt into a bowl.</li>
+                                <li>Drizzle honey evenly over the top.</li>
+                                <li>Add blueberries and sprinkle granola.</li>
+                                <li>Top with chopped almonds.</li>
+                                <li>Mix gently or keep layered. Serve chilled.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="meal-detail-container">
+                    <h3>🥪 Grilled Chicken Wrap</h3>
+                    <div class="action-buttons">
+                        <button>Add to Favorites</button>
+                        <button>Rate Recipe</button>
+                    </div>
+                    <div class="meal-detail-content">
+                        <div class="ingredients">
+                            <h4>Ingredients:</h4>
+                            <ul>
+                                <li>Grilled chicken</li>
+                                <li>Whole wheat tortilla</li>
+                                <li>Avocado</li>
+                                <li>Lettuce, tomato, onion</li>
+                                <li>Hummus or mayo</li>
+                            </ul>
+                        </div>
+                        <div class="preparation">
+                            <h4>Preparation:</h4>
+                            <ol>
+                                <li>Grill the chicken and let it rest. Slice into thin strips.</li>
+                                <li>Warm the tortillas slightly in a pan or microwave.</li>
+                                <li>Spread hummus or mayo on the tortilla.</li>
+                                <li>Layer with lettuce, tomato, onion, avocado, and chicken.</li>
+                                <li>Roll the tortilla tightly and slice in half to serve.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="meal-detail-container">
+                    <h3>🍝 Spaghetti Bolognese</h3>
+                    <div class="action-buttons">
+                        <button>Add to Favorites</button>
+                        <button>Rate Recipe</button>
+                    </div>
+                    <div class="meal-detail-content">
+                        <div class="ingredients">
+                            <h4>Ingredients:</h4>
+                            <ul>
+                                <li>Ground beef</li>
+                                <li>Onion, garlic</li>
+                                <li>Tomato sauce</li>
+                                <li>Spaghetti</li>
+                                <li>Parmesan & basil</li>
+                            </ul>
+                        </div>
+                        <div class="preparation">
+                            <h4>Preparation:</h4>
+                            <ol>
+                                <li>Cook spaghetti in salted water until al dente. Drain and set aside.</li>
+                                <li>In a pan, sauté chopped onion and garlic until fragrant.</li>
+                                <li>Add ground beef and cook until browned.</li>
+                                <li>Pour in tomato sauce, stir, and let it simmer for 10–15 minutes.</li>
+                                <li>Serve meat sauce over spaghetti and top with parmesan and basil.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="meal-detail-container">
+                    <h3>🍎 Apple with Peanut Butter</h3>
+                    <div class="action-buttons">
+                        <button>Add to Favorites</button>
+                        <button>Rate Recipe</button>
+                    </div>
+                    <div class="meal-detail-content">
+                        <div class="ingredients">
+                            <h4>Ingredients:</h4>
+                            <ul>
+                                <li>Apple slices</li>
+                                <li>Peanut butter</li>
+                                <li>(Optional) cinnamon or granola</li>
+                            </ul>
+                        </div>
+                        <div class="preparation">
+                            <h4>Preparation:</h4>
+                            <ol>
+                                <li>Wash and core the apple. Slice into thin wedges.</li>
+                                <li>Arrange slices on a plate.</li>
+                                <li>Serve with a dollop of peanut butter on the side or spread directly.</li>
+                                <li>Sprinkle with cinnamon or granola if desired.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meal Swap Tab -->
+            <section id="swap" class="card tab">
+                <h2>🔁 Swap Meal</h2>
+
+
+                <div class="meal-swap-group">
+                    <h3>🍳 Breakfast Options</h3>
+                    <div class="meal-swap-list">
+                        <div class="meal-swap-card">
+                            <p>🥣 <strong>Oatmeal with Banana and Almonds</strong></p>
+                            <span>310 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🍞 <strong>Avocado Toast with Egg</strong></p>
+                            <span>330 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🥤 <strong>Protein Smoothie with Berries</strong></p>
+                            <span>290 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="meal-swap-group">
+                    <h3>🥪 Lunch Options</h3>
+                    <div class="meal-swap-list">
+                        <div class="meal-swap-card">
+                            <p>🥗 <strong>Quinoa Salad with Chickpeas and Feta</strong></p>
+                            <span>480 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🌮 <strong>Turkey Lettuce Tacos</strong></p>
+                            <span>390 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🍛 <strong>Chicken Stir Fry with Brown Rice</strong></p>
+                            <span>540 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="meal-swap-group">
+                    <h3>🍝 Dinner Options</h3>
+                    <div class="meal-swap-list">
+                        <div class="meal-swap-card">
+                            <p>🥘 <strong>Grilled Salmon with Steamed Veggies</strong></p>
+                            <span>580 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🍲 <strong>Lentil Soup with Whole-Grain Bread</strong></p>
+                            <span>450 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                        <div class="meal-swap-card">
+                            <p>🌯 <strong>Veggie Burrito Bowl</strong></p>
+                            <span>520 kcal</span>
+                            <button class="select-btn">Select Meal</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sourcing Tab -->
+            <section id="sourcing" class="card tab">
+                <h2>🛒 Ingredient Sourcing</h2>
+
+
+                <div class="search-container">
+                    <input type="text" id="ingredient-search" placeholder="Search for ingredients..." />
+                    <button class="search-btn">Search</button>
+                </div>
+
+
+                <div class="sourcing-results">
+                    <h4>Search Results for: “Avocado”</h4>
+                    <div class="sourcing-card">
+                        <div class="store-info">
+                            <span>🥑</span>
+                            <p><strong>Avocado (Hass)</strong> - $1.25 each</p>
+                            <p class="store-name">Whole Foods</p>
+                            <p class="store-distance">1.2 mi</p>
+                            <p class="store-rating">⭐ 4.5</p>
+                        </div>
+                    </div>
+
+                    <div class="sourcing-card">
+                        <div class="store-info">
+                            <span>🥑</span>
+                            <p><strong>Organic Avocados</strong> - $2.99 for 2</p>
+                            <p class="store-name">Trader Joe’s</p>
+                            <p class="store-distance">2.1 mi</p>
+                            <p class="store-rating">⭐ 4.8</p>
+                        </div>
+                    </div>
+
+                    <div class="sourcing-card">
+                        <div class="store-info">
+                            <span>🥑</span>
+                            <p><strong>Bulk Avocados (6-pack)</strong> - $5.99</p>
+                            <p class="store-name">Costco</p>
+                            <p class="store-distance">3.5 mi</p>
+                            <p class="store-rating">⭐ 4.6</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <script>
+            function showTab(tabId) {
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+
+                document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        </script>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+</body>
+</html>

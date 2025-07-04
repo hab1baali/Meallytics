@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meallytic - Welcome</title>
+    <style>
+        :root {
+            --dark-blue: #0a192f;
+            --darker-blue: #020c1b;
+            --dark-green: #1a4314;
+            --light-green: #2e8b57;
+            --white: #ffffff;
+            --black: #000000;
+            --gray: #ccd6f6;
+        }
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0%;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background-color: #0f172a;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+            .sidebar a {
+                padding: 15px 25px;
+                text-decoration: none;
+                font-size: 18px;
+                color: white;
+                display: block;
+                transition: 0.2s;
+            }
+
+                .sidebar a:hover {
+                    background-color: #1db954;
+                }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            margin-left: 50px;
+            cursor: pointer;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            z-index: 1;
+            color: white;
+        }
+
+        /* Adjust main content when sidebar is open */
+        .main-content {
+            transition: margin-left 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            height: 90px;
+            width: auto;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        /* Welcome Page Styling */
+        .hero {
+            text-align: center;
+            padding: 0 0 80px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--white), var(--gray));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--light-green);
+            color: var(--white);
+        }
+
+            .btn-primary:hover {
+                background-color: var(--dark-green);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--light-green);
+        }
+
+            .btn-secondary:hover {
+                background-color: rgba(46, 139, 87, 0.1);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        /* Login & Signup Form Styling */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(10, 25, 47, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                color: var(--gray);
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 5px;
+                border: 1px solid var(--light-green);
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--white);
+                font-size: 1rem;
+            }
+
+                .form-group input:focus {
+                    outline: none;
+                    border-color: var(--light-green);
+                    box-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
+                }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .form-footer a {
+                color: var(--light-green);
+                text-decoration: none;
+            }
+
+                .form-footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+        }
+
+            .page.active {
+                display: block;
+            }
+
+        .wave-background {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%231a4314" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%231a4314" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,931.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%231a4314"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--darker-blue);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <div class="menu-btn" onclick="openNav()">☰</div>
+    <!-- Welcome Page -->
+    <div id="welcome-page" class="page active">
+
+        <main>
+            <div class="container">
+                <!-- Logo Centered at Top -->
+                <div class="logo-container">
+                    <img src="assets/images/robologo.png" alt="Meallytic Logo" class="logo-img" style="width: 240px; height: 250px">
+                </div>
+
+                <div class="hero">
+                    <h1>Welcome to Meallytics!</h1>
+                    <p class="tagline">Your personal nutrition analytics platform designed to help you make better food choices and achieve your health goals.</p>
+
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="showPage('login-page')">Login</button>
+                        <button class="btn btn-secondary" onclick="showPage('signup-page')">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wave-background"></div>
+        </main>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page">
+        <header>
+            <div class="logo-container">
+                <a href="#" class="logo" onclick="showPage('welcome-page')">
+                    <img src="assets/images/Meallytics logo.png" alt="Meallytic Logo" width="220" style="margin-top: 15px; height:60px;">
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="form-title">Login to Your Account</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" onclick="showPage('signup-page')">Sign Up</a></p>
+                        <button class="btn btn-secondary" onclick="showPage('welcome-page')" style="margin-top: 15px;">Back</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signup-page" class="page">
+        <header>
+            <div class="logo-container">
+                <a href="#" class="logo" onclick="showPage('welcome-page')">
+                    <img src="assets/images/Meallytics logo.png" alt="Meallytic Logo" width="220" style="margin-top: 15px; height:60px;">
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="form-title">Create an Account</h2>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-firstname">First Name</label>
+                            <input type="text" id="signup-firstname" required placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-lastname">Last Name</label>
+                            <input type="text" id="signup-lastname" required placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" required placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required placeholder="Create a password (min 8 characters)" minlength="8">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" onclick="showPage('login-page')">Login</a></p>
+                        <button class="btn btn-secondary" onclick="showPage('welcome-page')" style="margin-top: 15px;">Back</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Meallytic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // User storage functions
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
+        function saveUser(user) {
+            const users = getUsers();
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        function findUserByEmail(email) {
+            const users = getUsers();
+            return users.find(user => user.email === email);
+        }
+
+        // Show the selected page and hide others
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Login form handling
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            const user = findUserByEmail(email);
+
+            if (user && user.password === password) {
+                // Store current user session
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                // Redirect to dashboard
+                window.location.href = "Main Dashboard.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+                document.getElementById('login-password').value = '';
+            }
+        });
+
+        // Signup form handling
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const firstName = document.getElementById('signup-firstname').value.trim();
+            const lastName = document.getElementById('signup-lastname').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
+
+            // Basic validation
+            if (!firstName || !lastName || !email || !password) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long");
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                alert("Please enter a valid email address");
+                return;
+            }
+
+            // Check if user already exists
+            if (findUserByEmail(email)) {
+                alert("An account with this email already exists. Please login instead.");
+                showPage('login-page');
+                return;
+            }
+
+            // Create user object
+            const userData = {
+                firstName,
+                lastName,
+                email,
+                password // Note: In real app, you would hash this before storing
+            };
+
+            // Save user to "database"
+            saveUser(userData);
+
+            // Store current user session
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+
+            // Redirect to login
+            showPage('login-page');
+        });
+
+        // Sidebar functions
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.querySelector(".main-content").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.querySelector(".main-content").style.marginLeft = "0";
+        }
+    </script>
+</body>
+</html>

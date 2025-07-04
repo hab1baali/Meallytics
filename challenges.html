@@ -1,0 +1,311 @@
+<!-- challenges.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenges</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    body {
+      background-color: #0a0f1c;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background-color: #081828;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ff88;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    .card {
+      background-color: #121c2b;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    button {
+      background-color: #0f4c75;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #00ff88;
+      transform: scale(1.05);
+    }
+      .card-actions {
+          margin-top: 1rem;
+      }
+
+      .edit-btn {
+          background-color: darkorange;
+      }
+
+      .delete-btn {
+          background-color: crimson;
+      }
+      .edit-btn:hover {
+          background-color: #ff9933;
+      }
+
+      .delete-btn:hover {
+          background-color: #e60000;
+      }
+
+      .join-btn {
+          background-color: #007bff;
+      }
+
+          .join-btn:hover {
+              background-color: #3399ff;
+          }
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background-color: #1c2b3a;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 300px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: none;
+    }
+    .close {
+      float: right;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #aaa;
+    }
+    .close:hover {
+      color: white;
+    }
+    #challenges-list li {
+      background-color: #0f1f2d;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <nav class="navbar">
+        <div class="menu-btn" onclick="openNav()">☰</div>
+        <div class="logo">
+            <a href="Main Dashboard.html">
+                <img src="assets/images/Meallytics logo.png" alt="Logo">
+            </a>
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <h1>Challenges</h1>
+
+        <div class="create-buttons">
+            <button onclick="openModal('General')">Create General Challenge</button>
+            <button onclick="openModal('Solo')">Create Solo Challenge</button>
+            <button onclick="openModal('Team')">Create Team Challenge</button>
+        </div>
+
+
+        <div class="card">
+            <h2>Active Challenges</h2>
+            <ul id="challenges-list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>Leaderboard Snapshot</h2>
+            <p>1. 🥇 John - 1050 pts</p>
+            <p>2. 🥈 Sarah - 990 pts</p>
+            <p>3. 🥉 Ahmed - 870 pts</p>
+        </div>
+    </div>
+
+    <div id="challengeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Create Challenge</h2>
+            <input type="text" id="challengeName" placeholder="Challenge Title" />
+            <textarea id="challengeDesc" rows="4" placeholder="Challenge Description"></textarea>
+            <button onclick="submitChallenge()">Submit</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("challengeModal").style.display = "none";
+        });
+
+        let currentChallengeType = '';
+        let editingCard = null;
+
+        function openModal(type, card = null) {
+            currentChallengeType = type;
+            editingCard = card;
+
+            const title = card ? card.querySelector('h3').childNodes[0].nodeValue.trim() : '';
+            const desc = card ? card.querySelector('p').innerText : '';
+
+            document.getElementById("modalTitle").innerText = card ? `Edit ${type} Challenge` : `Create ${type} Challenge`;
+            document.getElementById("challengeName").value = title;
+            document.getElementById("challengeDesc").value = desc;
+
+            document.getElementById("challengeModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("challengeModal").style.display = "none";
+            document.getElementById("challengeName").value = '';
+            document.getElementById("challengeDesc").value = '';
+            editingCard = null;
+        }
+
+        function joinChallenge(button) {
+            const li = button.closest("li");
+            const title = li.querySelector("h3").innerText;
+            alert(`You've joined the challenge: ${title}`);
+            button.disabled = true;
+            button.innerText = "Joined";
+            button.style.backgroundColor = "#555";
+        }
+
+
+        function submitChallenge() {
+            const name = document.getElementById("challengeName").value.trim();
+            const desc = document.getElementById("challengeDesc").value.trim();
+            if (!name || !desc) return;
+
+            if (editingCard) {
+                editingCard.querySelector("h3").childNodes[0].nodeValue = name + ' ';
+                editingCard.querySelector("p").innerText = desc;
+            } else {
+                const list = document.getElementById("challenges-list");
+                const li = document.createElement("li");
+
+                li.innerHTML = `
+                                                          <h3>${name} <small>(${currentChallengeType})</small></h3>
+                                                          <p>${desc}</p>
+                                                          <div class="card-actions">
+                                                                <button class="edit-btn" onclick="openModal('${currentChallengeType}', this.closest('li'))">Edit</button>
+                                                                <button class="delete-btn" onclick="this.closest('li').remove()">Delete</button>
+                                                                <button class="join-btn" onclick="joinChallenge(this)">Join</button>
+                                                          </div>
+
+                                                      `;
+
+                list.prepend(li);
+            }
+
+            closeModal();
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("challengeModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.querySelector(".main-content").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.querySelector(".main-content").style.marginLeft = "0";
+        }
+    </script>
+
+</body>
+</html>

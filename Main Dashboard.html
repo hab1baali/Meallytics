@@ -1,0 +1,380 @@
+<!--Main Dashboard.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meallytics Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00e676;
+      --bg-dark: #1a1b27;
+      --bg-mid: #2a2c3c;
+      --accent: #2979ff;
+      --text-light: #e0e0e0;
+      --text-muted: #9e9e9e;
+    }
+      /* Sidebar styles */
+      .sidebar {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1000;
+          top: 0;
+          left: 0;
+          background-color: #0f172a;
+          overflow-x: hidden;
+          transition: 0.3s;
+          padding-top: 60px;
+      }
+
+          .sidebar a {
+              padding: 15px 25px;
+              text-decoration: none;
+              font-size: 18px;
+              color: white;
+              display: block;
+              transition: 0.2s;
+          }
+
+              .sidebar a:hover {
+                  background-color: #1db954;
+              }
+
+      .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 25px;
+          font-size: 30px;
+          margin-left: 50px;
+          cursor: pointer;
+      }
+
+      .menu-btn {
+          font-size: 30px;
+          cursor: pointer;
+          position: absolute;
+          left: 20px;
+          top: 15px;
+          z-index: 1;
+          color: white;
+      }
+
+      /* Adjust main content when sidebar is open */
+      .main-content {
+          transition: margin-left 0.3s;
+      }
+
+
+
+
+
+
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #0f172a;
+          color: white;
+          margin: 0;
+          padding: 0;
+      }
+
+     nav {
+         background: linear-gradient(90deg, #065f46, #1e3a8a);
+         padding: 1rem;
+         display: flex;
+         text-align: center;
+         gap: 2rem;
+         justify-content: center;
+         box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+     }
+
+     nav a {
+         color: white;
+         text-decoration: none;
+         font-weight: bold;
+         transition: color 0.3s;
+     }
+
+     nav a:hover {
+         color: #00ff88;
+     }
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+.logo img {
+  height: 50px;
+  margin-left:320%;
+}
+
+
+
+    header {
+      padding: 20px;
+      background-color: var(--bg-mid);
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .greeting {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .coach-button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      curs  or: pointer;
+      transition: background 0.3s;
+    }
+
+    .coach-button:hover {
+      background-color: #1e5edb;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .section {
+      background-color: var(--bg-mid);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #00000050;
+    }
+
+    .section h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .reminder {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reminder div {
+      background-color: #394050;
+      padding: 10px;
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+    }
+
+    .progress-box {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .progress-box div {
+      background-color: #33394f;
+      padding: 15px;
+      border-radius: 10px;
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .highlight {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .meals, .workout {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meal, .exercise {
+      background-color: #394050;
+      padding: 12px;
+      border-radius: 8px;
+    }
+      .logo img {
+          height: 50px;
+          width: 200px;
+          position:center;
+         
+      }
+
+      .nav-links {
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          flex: 1;
+          text-align: center;
+          margin-right: 80px;
+      }
+
+      h1, h2 {
+          color: #22c55e;
+      }
+
+          .nav-links a {
+              text-decoration: none;
+              color: white;
+              font-weight: bold;
+              font-size: 18px;
+          }
+
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .modal-content {
+          width: 90%;
+      }
+
+      nav a {
+          display: block;
+          margin: 0.5rem auto;
+      }
+      
+      
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="Main Dashboard.html">🏠 Home Page</a>
+        <a href="user-profile.html">👤 User Profile</a>
+        <a href="index.html">🔔 Reminders & Notifications</a>
+
+        <label>___________________________________</label>
+        <a href="coach-chat_feedback.html">👨‍💼 Coach Support</a>
+
+        <label>___________________________________</label>
+        <a href="streaks.html">🔥 Streaks</a>
+        <a href="leaderboard.html">📈 LeaderBoard</a>
+        <a href="Achievements.html">🏅 Achievements</a>
+        <a href="progress_report_page.html">📋 Progress Report</a>
+
+        <label>___________________________________</label>
+        <a href="Meal Managment.html">🍱 Meal Managment</a>
+        <a href="nutrition_insights_page.html">📊 Nutrition Insights</a>
+
+        <label>___________________________________</label>
+        <a href="homePgaefitness.htm">💪🏻 Fitness & Activity</a>
+        <a href="weekly-plan.htm">🏋 Workout plan</a>
+
+
+        <label>___________________________________</label>
+        <a href="challenges.html">🗓 Challenges</a>
+        <a href="weekly_view.html">🗓️ Weekly View</a>
+        <a href="monthly_view.html">🗓️ Monthly View</a>
+
+        <label>___________________________________</label>
+        <a href="settings.html">⚙️ Settings</a>
+        <a href="Welcome.html">🔑 Login / SignUp</a>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+        <label>___________________________________</label>
+
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <nav class="navbar">
+            <div class="menu-btn" onclick="openNav()">☰</div>
+            <div class="logo">
+                <a href="Main Dashboard.html">
+                    <img src="assets/images/Meallytics logo.png" alt="Logo">
+                </a>
+            </div>
+
+        </nav>
+
+        <header>
+            <div class="greeting">
+                <h1>👋 Welcome Back, John!</h1>
+                <p>Here’s your summary for <strong>Thursday, April 24, 2025</strong></p>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>🥗 Today’s Meals</h2>
+                <div class="meals">
+                    <div class="meal">🍳 Breakfast: Greek Yogurt Bowl</div>
+                    <div class="meal">🥪 Lunch: Grilled Chicken Wrap</div>
+                    <div class="meal">🥘 Dinner: Quinoa Veggie Stir Fry</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💪 Today’s Workout</h2>
+                <div class="workout">
+                    <div class="exercise">🏃 30 min Cardio</div>
+                    <div class="exercise">🧘 15 min Stretching</div>
+                    <div class="exercise">🏋️ 3x10 Dumbbell Squats</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📈 Progress Snapshot</h2>
+                <div class="progress-box">
+                    <div>
+                        <div class="highlight">1350</div>
+                        <p>Calories Burned</p>
+                    </div>
+                    <div>
+                        <div class="highlight">7 Days</div>
+                        <p>Streak</p>
+                    </div>
+                    <div>
+                        <div class="highlight">5</div>
+                        <p>Badges Earned</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔔 Reminders</h2>
+                <div class="reminder">
+                    <div>💧 Drink 2 more glasses of water</div>
+                    <div>🍎 Log your dinner meal</div>
+                    <div>🧘 Complete evening yoga</div>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.querySelector(".main-content").style.marginLeft = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.querySelector(".main-content").style.marginLeft = "0";
+            }
+        </script>
+
+</body>
+</html>
